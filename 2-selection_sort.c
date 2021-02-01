@@ -44,6 +44,7 @@ void selection_sort(int *array, size_t size)
 			/*  0   1   2   3   4   5   6   7   8   9 */
 			/* {19, 48, 71, 13, 99, 52, 96, 73, 86, 7}; */
 
+			print_array(array, size);
 		}
 	}
 
