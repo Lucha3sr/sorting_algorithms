@@ -1,34 +1,50 @@
 #include "sort.h"
+
 /**
- * selection_sort - Function that sorts an array of integers in ascending order
- *
- * @array: pointer to array.
- * @size: size of array.
- *
- * Return: Nothing.
- */
+ * selection_sort - sort array using selection sort algorithm
+ * @array: array
+ * @size: array size
+ **/
+
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, temp;
+	unsigned int i, j, min, temporal;
 
 	if (array == NULL || size < 2)
-	{
 		return;
-	}
 
-	/* Toma el primer valor y lo almacena en i */
+	/*  0   1   2   3   4   5   6   7   8   9 */
+	/* {19, 48, 99, 71, 13, 52, 96, 73, 86, 7}; */
+
 	for (i = 0; i < size; i++)
 	{
-		/* toma el primer valor */
+		/* min = 3; array[min] = 99 */
+
+		min = i;
 		for (j = i + 1; j < size; j++)
 		{
-			/* comparamos si posicion i es mayor a posicion i+1 */
-			if (array[i] > array[j])
-			{
-				temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
-			}
+			/* j = 4; array[j] = 13 */
+
+			/* si 99 > 13? */
+			if (array[min] > array[j])
+				/* Entonces min ahora vale 4 */
+				min = j;
+		}
+
+		/* si min (4) es distinto 3? */
+		if (min != i)
+		{
+			/* Entonces array[min] (13) */
+			temporal = array[min];
+			/* Array[min] (13) > array[i] = 99 */
+			array[min] = array[i];
+			/* array[i] = 13 */
+			array[i] = temporal;
+
+			/*  0   1   2   3   4   5   6   7   8   9 */
+			/* {19, 48, 71, 13, 99, 52, 96, 73, 86, 7}; */
+
 		}
 	}
+
 }
