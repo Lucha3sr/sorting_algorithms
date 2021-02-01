@@ -1,10 +1,8 @@
 #include "sort.h"
 
 /**
- * create_listint - Creates a doubly linked list from an array of integers
- *
- * @listint_t: doubly linked list
- * @list: list
+ * insertion_sort_list - function that sorts a doubly linked list of integers
+ * @list: Doubly linked list
  *
  * Return: nothing
  */
