@@ -84,5 +84,4 @@ void quick_sort(int *array, size_t size)
 	int limite_der = size - 1;
 
 	_proyecto_lu_niko(array, limite_izq, limite_der);
-
 }
