@@ -1,89 +1,74 @@
 #include "sort.h"
 
 /**
- * _swap - swap two numbers.
- * @a: integer
- * @b: integer
- **/
-
-void _swap(int *a, int *b)
-{
-	int tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-
-}
-
-/**
  * _split - Split the array and takes the last element as pivot
- * @arr: Array
- * @min: first element
- * @last: The last element
- * @size: size
- * Return: integer
+ * @array: Array
+ * @first: first element of array
+ * @last: last element of array
+ * @size: size of array
+ * Return: index of new part
  **/
-int _split(int *arr, int min, int last, size_t size)
+int _split(int *array, int first, int last, size_t size)
 {
-	int piv;
-	int i = (min);
-	int j;
+	int pivot;
+	int i = first;
+	int j, temp;
 
-	piv = arr[last];
-	for (j = min; j < last; j++)
+	pivot = array[last];
+	for (j = first; j < last; j++)
 	{
-		if (arr[j] <= piv)
+		if (array[j] <= pivot)
 		{
 
-			_swap(&arr[i], &arr[j]);
-
-
+			temp = array[j];
+			array[j] = array[i];
+			array[i] = temp;
 			if (i != j)
-				print_array(arr, size);
-
+				print_array(array, size);
 			i++;
 
 		}
 	}
 
-	_swap(&arr[i], &arr[last]);
+	temp = array[i];
+	array[i] = array[j];
+	array[j] = temp;
 	if (i != j)
-		print_array(arr, size);
+		print_array(array, size);
 
 	return (i);
 }
 
 /**
- * quick_sort_array - quick_sort_array
- * @arr: arr
- * @min: min
- * @last: last
- * @size: size
+ * quick_sort_parts - sort array in two parts
+ * @array: array
+ * @first: first index
+ * @last: last index
+ * @size: size of array
  * Return: Nothing
  */
-void quick_sort_array(int *arr, int min, int last, size_t size)
+void quick_sort_parts(int *array, int first, int last, size_t size)
 {
 
-	int piv;
+	int pivot;
 
-	if (min < last)
+	if (first < last)
 	{
-		piv = _split(arr, min, last, size);
-		quick_sort_array(arr, min, (piv - 1), size);
-		quick_sort_array(arr, (piv + 1), last, size);
+		pivot = _split(array, first, last, size);
+		quick_sort_parts(array, first, (pivot - 1), size);
+		quick_sort_parts(array, (pivot + 1), last, size);
 	}
 }
 
 /**
  * quick_sort -Sort an array using quick_sort algorithm
- * @array: array
- * @size: size
+ * @array: array to be sorted
+ * @size: size of array
  **/
 void quick_sort(int *array, size_t size)
 {
-	if (size < 2)
+	if (array == NULL || size < 2)
 		return;
 
-	quick_sort_array(array, 0, size - 1, size);
+	quick_sort_parts(array, 0, size - 1, size);
 }

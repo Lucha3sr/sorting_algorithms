@@ -22,6 +22,7 @@ void print_list(const listint_t *list);
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
+int _split(int *array, int first, int last, size_t size);
+void quick_sort_parts(int *array, int first, int last, size_t size);
 void quick_sort(int *array, size_t size);
-void _proyecto_lu_niko(int *array, int limite_izq, int limite_der);
 #endif
