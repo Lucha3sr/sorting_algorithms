@@ -47,4 +47,11 @@ void selection_sort(int *array, size_t size)
 			print_array(array, size);
 		}
 	}
+<<<<<<< HEAD
+
+	
+
 }
+=======
+}
+>>>>>>> 16959da91b214c58f2e3040a339f0438ec78a727
